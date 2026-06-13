@@ -172,6 +172,24 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-
 .yt-card{background:rgba(255,255,255,0.06);backdrop-filter:blur(24px)saturate(1.4);border:1px solid rgba(255,255,255,0.10);
   border-radius:24px;overflow:hidden;transition:all .4s;box-shadow:0 20px 60px rgba(0,0,0,0.35);}
 .yt-card:hover{transform:translateY(-6px)scale(1.01);box-shadow:0 30px 80px rgba(0,0,0,0.45),0 0 0 1px rgba(255,100,100,0.2);}
+}
+
+@media (max-width: 900px){
+  nav{height:64px !important;padding:0 1rem !important;}
+  nav .nav-links{display:none !important;}
+  nav .call-now{padding:.48rem .9rem !important;font-size:.82rem !important}
+
+  /* Stack grid layouts and reduce spacing */
+  .hero-grid{grid-template-columns:1fr !important;min-height:auto !important}
+  [style*="grid-template-columns"]{grid-template-columns:1fr !important;gap:1rem !important}
+  section{padding:3.5rem 1rem !important}
+  .glass{padding:.9rem !important;border-radius:12px !important}
+  .photo-float{object-position:center !important;height:auto !important}
+  .reveal{transition:opacity .45s,transform .45s}
+
+  .svc-card,.fw-card,.story-card,.phil-book-card{min-height:auto !important;padding:1rem !important}
+  .aura-orb-1,.aura-orb-2,.aura-orb-3,.aura-orb-4{display:none !important}
+}
 `;
 if (!document.getElementById("ml-global-css")) {
   const s = document.createElement("style");
@@ -220,12 +238,12 @@ function Navbar() {
         <span className="font-display" style={{fontSize:"1.6rem",fontWeight:700,color:"var(--ink)",lineHeight:1}}>M L Suriya</span>
         <span style={{fontSize:"0.75rem",fontWeight:600,letterSpacing:"0.26em",textTransform:"uppercase",color:"var(--p500)"}}>Peaceful Profit Monk</span>
       </div>
-      <ul style={{display:"flex",gap:"3rem",listStyle:"none"}}>
+      <ul className="nav-links" style={{display:"flex",gap:"3rem",listStyle:"none"}}>
         {links.map((l,i)=>(
           <li key={l}><a href={hrefs[i]} className="nav-link" style={{fontSize:"1.05rem",fontWeight:600,letterSpacing:"0.08em",color:"var(--ink2)",textDecoration:"none",position:"relative"}}>{l}</a></li>
         ))}
       </ul>
-      <a href="tel:+919427611171" style={{fontSize:"0.95rem",fontWeight:600,letterSpacing:"0.12em",textTransform:"uppercase",color:"#fff",background:"linear-gradient(135deg,var(--p700),var(--p500))",padding:"0.68rem 1.7rem",borderRadius:"100px",textDecoration:"none",boxShadow:"0 4px 20px rgba(107,53,200,0.38)",transition:"all 0.3s"}}>Call Now</a>
+      <a href="tel:+919427611171" className="call-now" style={{fontSize:"0.95rem",fontWeight:600,letterSpacing:"0.12em",textTransform:"uppercase",color:"#fff",background:"linear-gradient(135deg,var(--p700),var(--p500))",padding:"0.68rem 1.7rem",borderRadius:"100px",textDecoration:"none",boxShadow:"0 4px 20px rgba(107,53,200,0.38)",transition:"all 0.3s"}}>Call Now</a>
     </nav>
   );
 }
@@ -239,7 +257,7 @@ function Hero() {
       <div style={{width:"100%"}}>
         <div style={{
           display:"grid",gridTemplateColumns:"1.06fr 0.94fr",alignItems:"stretch",position:"relative",zIndex:1,minHeight:640,
-          background:"linear-gradient(112deg,rgba(255,255,255,0.96)0%,rgba(251,247,255,0.93)56%,rgba(77,35,145,0.92)100%)",
+            background:"linear-gradient(112deg,rgba(255,255,255,0.96) 0%,rgba(251,247,255,0.93) 56%,rgba(77,35,145,0.92) 100%)",
           borderBottom:"1px solid rgba(255,255,255,0.75)",boxShadow:"0 28px 76px rgba(52,28,96,0.25)",
         }}>
           {/* Left */}
