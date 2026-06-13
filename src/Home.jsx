@@ -178,6 +178,10 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-
   nav{height:64px !important;padding:0 1rem !important;}
   nav .nav-links{display:none !important;}
   nav .call-now{padding:.48rem .9rem !important;font-size:.82rem !important}
+  .hamburger{display:block !important;color:var(--ink2);}
+
+  .mobile-menu{animation:fadeUp .28s ease both;}
+  .mobile-menu a{color:var(--ink2);}
 
   /* Stack grid layouts and reduce spacing */
   .hero-grid{grid-template-columns:1fr !important;min-height:auto !important}
@@ -217,6 +221,7 @@ function useReveal() {
 ───────────────────────────────────────────── */
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", onScroll);
@@ -224,26 +229,64 @@ function Navbar() {
   }, []);
   const links = ["About","4R","Philosophy","Services","YouTube","Contact"];
   const hrefs = ["#about","#framework","#philosophy","#services","#youtube","#contact"];
+
   return (
     <nav style={{
       position:"fixed",top:0,left:0,right:0,zIndex:999,height:78,
       display:"flex",alignItems:"center",justifyContent:"space-between",padding:"0 3rem",
       transition:"all 0.4s ease",
-      background: scrolled ? "rgba(247,245,254,0.82)" : "transparent",
-      backdropFilter: scrolled ? "blur(28px) saturate(1.7)" : "none",
+      background: scrolled ? "rgba(247,245,254,0.92)" : "transparent",
+      backdropFilter: scrolled ? "blur(22px) saturate(1.6)" : "none",
       borderBottom: scrolled ? "1px solid rgba(255,255,255,0.85)" : "none",
-      boxShadow: scrolled ? "0 2px 30px rgba(107,53,200,0.07)" : "none",
+      boxShadow: scrolled ? "0 2px 24px rgba(107,53,200,0.06)" : "none",
     }}>
-      <div style={{display:"flex",flexDirection:"column",gap:1}}>
-        <span className="font-display" style={{fontSize:"1.6rem",fontWeight:700,color:"var(--ink)",lineHeight:1}}>M L Suriya</span>
-        <span style={{fontSize:"0.75rem",fontWeight:600,letterSpacing:"0.26em",textTransform:"uppercase",color:"var(--p500)"}}>Peaceful Profit Monk</span>
+      <div style={{display:"flex",alignItems:"center",gap:12}}>
+        <div style={{display:"flex",flexDirection:"column",gap:1}}>
+          <span className="font-display" style={{fontSize:"1.6rem",fontWeight:700,color:"var(--ink)",lineHeight:1}}>M L Suriya</span>
+          <span style={{fontSize:"0.75rem",fontWeight:600,letterSpacing:"0.26em",textTransform:"uppercase",color:"var(--p500)"}}>Peaceful Profit Monk</span>
+        </div>
       </div>
+
+      <button
+        aria-label="Toggle menu"
+        onClick={() => setOpen((v) => !v)}
+        className="hamburger"
+        style={{
+          display: "none",
+          background: "transparent",
+          border: "none",
+          cursor: "pointer",
+          padding: 10,
+          marginLeft: 8,
+        }}
+      >
+        <svg width="28" height="20" viewBox="0 0 28 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="28" height="2" rx="1" fill="currentColor" />
+          <rect y="9" width="20" height="2" rx="1" fill="currentColor" />
+          <rect y="18" width="14" height="2" rx="1" fill="currentColor" />
+        </svg>
+      </button>
+
       <ul className="nav-links" style={{display:"flex",gap:"3rem",listStyle:"none"}}>
         {links.map((l,i)=>(
-          <li key={l}><a href={hrefs[i]} className="nav-link" style={{fontSize:"1.05rem",fontWeight:600,letterSpacing:"0.08em",color:"var(--ink2)",textDecoration:"none",position:"relative"}}>{l}</a></li>
+          <li key={l}><a href={hrefs[i]} onClick={()=>setOpen(false)} className="nav-link" style={{fontSize:"1.05rem",fontWeight:600,letterSpacing:"0.08em",color:"var(--ink2)",textDecoration:"none",position:"relative"}}>{l}</a></li>
         ))}
       </ul>
+
       <a href="tel:+919427611171" className="call-now" style={{fontSize:"0.95rem",fontWeight:600,letterSpacing:"0.12em",textTransform:"uppercase",color:"#fff",background:"linear-gradient(135deg,var(--p700),var(--p500))",padding:"0.68rem 1.7rem",borderRadius:"100px",textDecoration:"none",boxShadow:"0 4px 20px rgba(107,53,200,0.38)",transition:"all 0.3s"}}>Call Now</a>
+
+      {open && (
+        <div className="mobile-menu" style={{position:"fixed",top:64,left:0,right:0,background:"rgba(255,255,255,0.98)",boxShadow:"0 10px 40px rgba(10,4,22,0.12)",padding:"1rem 1.25rem",zIndex:998}}>
+          <ul style={{listStyle:"none",display:"flex",flexDirection:"column",gap:"0.9rem",margin:0}}>
+            {links.map((l,i)=> (
+              <li key={l}><a href={hrefs[i]} onClick={()=>setOpen(false)} style={{display:"block",padding:"0.75rem 0",fontSize:"1.05rem",fontWeight:700,color:"var(--ink2)",textDecoration:"none"}}>{l}</a></li>
+            ))}
+          </ul>
+          <div style={{marginTop:"0.75rem"}}>
+            <a href="tel:+919427611171" style={{display:"inline-block",padding:"0.6rem 1rem",background:"linear-gradient(135deg,var(--p700),var(--p500))",color:"#fff",borderRadius:10,textDecoration:"none",fontWeight:700}}>Call Now</a>
+          </div>
+        </div>
+      )}
     </nav>
   );
 }
