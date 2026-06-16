@@ -174,25 +174,189 @@ body{background:var(--bg);color:var(--ink);font-family:'DM Sans',system-ui,sans-
 .yt-card:hover{transform:translateY(-6px)scale(1.01);box-shadow:0 30px 80px rgba(0,0,0,0.45),0 0 0 1px rgba(255,100,100,0.2);}
 }
 
-@media (max-width: 900px){
-  nav{height:64px !important;padding:0 1rem !important;}
+/* Hide hamburger on desktop */
+.hamburger{display:none;}
+
+/* ── Base fluid font sizing ── */
+html{font-size:clamp(0.875rem, 0.65vw + 0.65rem, 1.125rem);}
+
+/* ── Prevent horizontal overflow globally ── */
+html,body{overflow-x:hidden;}
+img,video,iframe{max-width:100%;height:auto;}
+
+/* ── Mobile overlay for hamburger menu ── */
+.mobile-menu{animation:fadeUp .28s ease both;}
+.mobile-menu a{color:var(--ink2);}
+
+/* ── Course level card mobile adjustment ── */
+@media (max-width:640px){
+  .course-level-card{flex-wrap:wrap !important;}
+  .course-level-tag{margin-top:0.5rem !important;}
+}
+
+/* ── Large Desktop ≥ 1440px ── */
+@media (min-width:1440px){
+  .sec-inner{max-width:1280px !important;}
+}
+
+/* ── Ultra-wide ≥ 1920px ── */
+@media (min-width:1920px){
+  .sec-inner{max-width:1400px !important;}
+  html{font-size:1.125rem;}
+}
+
+/* ── Desktop ≤ 1280px ── */
+@media (max-width:1280px){
+  nav{padding:0 2.5rem !important;}
+  nav .nav-links{gap:2.2rem !important;}
+  .sec-inner{padding-left:2rem !important;padding-right:2rem !important;}
+}
+
+/* ── Tablet / Laptop ≤ 1024px ── */
+@media (max-width:1024px){
+  nav{padding:0 1.5rem !important;}
+  nav .nav-links{gap:1.5rem !important;}
+  nav .call-now{padding:.5rem 1.1rem !important;font-size:.82rem !important;}
+  .fw-grid{grid-template-columns:repeat(2,1fr) !important;}
+  .about-grid,.phil-grid{gap:3rem !important;}
+  .yt-grid,.ct-grid{gap:3rem !important;}
+  .hero-left{padding:2.8rem 2rem 2.5rem !important;}
+  .hero-overlay{width:92% !important;left:4% !important;right:4% !important;}
+  .aura-orb-1,.aura-orb-2,.aura-orb-3,.aura-orb-4{opacity:0.5 !important;transform:scale(0.7);}
+}
+
+/* ── Tablet Portrait ≤ 768px ── */
+@media (max-width:768px){
+  nav{height:60px !important;padding:0 1rem !important;}
   nav .nav-links{display:none !important;}
-  nav .call-now{padding:.48rem .9rem !important;font-size:.82rem !important}
   .hamburger{display:block !important;color:var(--ink2);}
+  nav .call-now{padding:.44rem .85rem !important;font-size:.78rem !important;}
 
-  .mobile-menu{animation:fadeUp .28s ease both;}
-  .mobile-menu a{color:var(--ink2);}
+  .hero-section{padding-top:60px !important;min-height:auto !important;}
+  .hero-grid{grid-template-columns:1fr !important;min-height:auto !important;}
+  .hero-left{padding:2rem 1.5rem 1.8rem !important;}
+  .hero-right{min-height:380px !important;}
+  .hero-cred-grid{grid-template-columns:1fr !important;}
+  .hero-overlay{left:3% !important;right:3% !important;width:94% !important;}
 
-  /* Stack grid layouts and reduce spacing */
-  .hero-grid{grid-template-columns:1fr !important;min-height:auto !important}
-  [style*="grid-template-columns"]{grid-template-columns:1fr !important;gap:1rem !important}
-  section{padding:3.5rem 1rem !important}
-  .glass{padding:.9rem !important;border-radius:12px !important}
-  .photo-float{object-position:center !important;height:auto !important}
-  .reveal{transition:opacity .45s,transform .45s}
+  .about-grid{grid-template-columns:1fr !important;gap:2.5rem !important;}
+  .about-sticky{position:relative !important;top:auto !important;}
 
-  .svc-card,.fw-card,.story-card,.phil-book-card{min-height:auto !important;padding:1rem !important}
-  .aura-orb-1,.aura-orb-2,.aura-orb-3,.aura-orb-4{display:none !important}
+  .fw-header{grid-template-columns:1fr !important;gap:1.5rem !important;}
+  .fw-grid{grid-template-columns:repeat(2,1fr) !important;gap:1rem !important;}
+
+  .phil-grid{grid-template-columns:1fr !important;gap:2.5rem !important;}
+  .phil-books{grid-template-columns:1fr !important;}
+
+  .svc-grid{grid-template-columns:1fr !important;gap:1.5rem !important;}
+  .sr-grid{grid-template-columns:1fr !important;gap:1.5rem !important;}
+  .fb-grid{grid-template-columns:1fr !important;}
+
+  .yt-grid{grid-template-columns:1fr !important;gap:2.5rem !important;}
+  .ct-grid{grid-template-columns:1fr !important;gap:2.5rem !important;}
+
+  .footer-flex{flex-direction:column !important;align-items:center !important;gap:0.8rem !important;text-align:center !important;}
+
+  .sec-inner{padding-left:1.25rem !important;padding-right:1.25rem !important;}
+  section{padding-top:4rem !important;padding-bottom:4rem !important;}
+  .glass{padding:1.15rem !important;border-radius:14px !important;}
+  .photo-float{object-position:center !important;height:auto !important;}
+  .reveal{transition:opacity .4s,transform .4s;}
+
+  .svc-card,.fw-card,.story-card,.phil-book-card{min-height:auto !important;padding:1.4rem !important;}
+  .aura-orb-1,.aura-orb-2,.aura-orb-3,.aura-orb-4{display:none !important;}
+
+  /* Course cards: stack on mobile */
+  .course-level-card{flex-direction:column !important;align-items:flex-start !important;gap:0.6rem !important;}
+  .course-level-tag{align-self:flex-start !important;}
+
+  /* YT card inner padding */
+  .yt-card > div:last-child{padding:0 1.2rem 1.2rem !important;}
+  .yt-card > div:nth-child(2){padding:1rem 1.2rem !important;}
+
+  /* Touch targets */
+  .btn-primary,.btn-secondary{min-height:44px;display:inline-flex;align-items:center;justify-content:center;}
+  .c-link{min-height:52px;}
+  .yt-sess{min-height:48px;}
+  .cred-pill{min-height:44px;}
+}
+
+/* ── Mobile ≤ 480px ── */
+@media (max-width:480px){
+  nav{height:56px !important;padding:0 0.75rem !important;}
+  nav .call-now{padding:.38rem .65rem !important;font-size:.7rem !important;letter-spacing:0.06em !important;}
+
+  .hero-section{padding-top:56px !important;}
+  .hero-left{padding:1.4rem 1rem 1.5rem !important;}
+  .hero-right{min-height:300px !important;}
+  .hero-stats{gap:0.5rem !important;}
+  .hero-stats > div{padding:0.7rem 0.4rem !important;}
+  .hero-stats > div span:first-child{font-size:2.2rem !important;}
+  .hero-cta{flex-direction:column !important;gap:0.75rem !important;}
+  .hero-cta .btn-primary,.hero-cta .btn-secondary{width:100% !important;text-align:center !important;padding:.8rem 1.4rem !important;}
+
+  .fw-grid{grid-template-columns:1fr !important;}
+
+  section{padding-top:3rem !important;padding-bottom:3rem !important;}
+  .glass{padding:1rem !important;border-radius:12px !important;}
+  .about-stats{gap:0.5rem !important;}
+  .about-stats > div{padding:0.75rem 0.4rem !important;}
+
+  .sec-inner{padding-left:0.85rem !important;padding-right:0.85rem !important;}
+
+  .svc-card,.fw-card{padding:1.1rem !important;}
+  .story-card{padding:0.95rem 1rem !important;}
+  .pillar{padding:1.1rem !important;}
+  .bq{padding:1.2rem !important;}
+  .c-link{padding:0.9rem !important;gap:0.75rem !important;}
+  .cred-pill{padding:.5rem .75rem !important;}
+  .phil-book-card{padding:0.95rem !important;}
+  .btn-primary,.btn-secondary{font-size:.66rem !important;padding:.75rem 1.4rem !important;}
+
+  /* Smaller hero credentials font */
+  .hero-cred-grid > div{padding:0.6rem 0.65rem !important;}
+  .hero-cred-grid > div span{font-size:0.65rem !important;}
+
+  /* Mobile menu positioning */
+  .mobile-menu{top:56px !important;}
+
+  /* Marquee text adjustment */
+  .marquee-anim span span:first-child{padding:0 1.5rem !important;}
+}
+
+/* ── Small Mobile ≤ 375px ── */
+@media (max-width:375px){
+  html{font-size:0.85rem;}
+  nav .call-now{font-size:.62rem !important;padding:.32rem .5rem !important;letter-spacing:0.04em !important;}
+
+  .hero-stats{gap:0.35rem !important;}
+  .hero-stats > div{padding:0.55rem 0.3rem !important;}
+  .hero-stats > div span:first-child{font-size:1.9rem !important;}
+
+  .about-stats{grid-template-columns:1fr !important;}
+  .sec-inner{padding-left:0.7rem !important;padding-right:0.7rem !important;}
+
+  .fw-card{padding:0.95rem !important;}
+  .svc-card{padding:1rem !important;}
+  .c-link{padding:0.8rem !important;}
+}
+
+/* ── Tiny Mobile ≤ 320px ── */
+@media (max-width:320px){
+  html{font-size:0.82rem;}
+  nav{padding:0 0.5rem !important;}
+  nav .call-now{font-size:.58rem !important;padding:.28rem .4rem !important;}
+
+  .hero-left{padding:1.2rem 0.75rem 1.2rem !important;}
+  .hero-stats{grid-template-columns:1fr !important;gap:0.4rem !important;}
+  .hero-stats > div span:first-child{font-size:1.6rem !important;}
+
+  section{padding-top:2.5rem !important;padding-bottom:2.5rem !important;}
+  .sec-inner{padding-left:0.6rem !important;padding-right:0.6rem !important;}
+
+  .btn-primary,.btn-secondary{font-size:.6rem !important;padding:.7rem 1.1rem !important;}
+  .glass{padding:0.85rem !important;}
+  .fb-grid{gap:0.5rem !important;}
 }
 `;
 if (!document.getElementById("ml-global-css")) {
@@ -252,7 +416,6 @@ function Navbar() {
         onClick={() => setOpen((v) => !v)}
         className="hamburger"
         style={{
-          display: "none",
           background: "transparent",
           border: "none",
           cursor: "pointer",
@@ -296,15 +459,15 @@ function Navbar() {
 ───────────────────────────────────────────── */
 function Hero() {
   return (
-    <section style={{minHeight:"100vh",display:"flex",alignItems:"flex-start",paddingTop:78,overflow:"hidden",position:"relative",isolation:"isolate"}}>
+    <section className="hero-section" style={{minHeight:"100vh",display:"flex",alignItems:"flex-start",paddingTop:78,overflow:"hidden",position:"relative",isolation:"isolate"}}>
       <div style={{width:"100%"}}>
-        <div style={{
+        <div className="hero-grid" style={{
           display:"grid",gridTemplateColumns:"1.06fr 0.94fr",alignItems:"stretch",position:"relative",zIndex:1,minHeight:640,
             background:"linear-gradient(112deg,rgba(255,255,255,0.96) 0%,rgba(251,247,255,0.93) 56%,rgba(77,35,145,0.92) 100%)",
           borderBottom:"1px solid rgba(255,255,255,0.75)",boxShadow:"0 28px 76px rgba(52,28,96,0.25)",
         }}>
           {/* Left */}
-          <div style={{display:"flex",flexDirection:"column",justifyContent:"flex-start",padding:"3.4rem 3.1rem 3rem",position:"relative",zIndex:2,background:"linear-gradient(140deg,rgba(255,255,255,0.97),rgba(249,244,255,0.95))"}}>
+          <div className="hero-left" style={{display:"flex",flexDirection:"column",justifyContent:"flex-start",padding:"3.4rem 3.1rem 3rem",position:"relative",zIndex:2,background:"linear-gradient(140deg,rgba(255,255,255,0.97),rgba(249,244,255,0.95))"}}>
             {/* Om symbol */}
             <div style={{position:"relative",width:82,marginBottom:"1.2rem",display:"flex",flexDirection:"column",alignItems:"flex-start",gap:"0.5rem"}}>
               <div style={{position:"absolute",width:56,height:56,top:32,left:32,transform:"translate(-50%,-50%)",borderRadius:"50%",border:"1px solid rgba(240,120,64,0.35)"}} className="ring-1"/>
@@ -319,7 +482,7 @@ function Hero() {
             </h1>
             <span style={{fontFamily:"'DM Sans',sans-serif",fontSize:"1.55rem",fontWeight:500,color:"var(--muted)",display:"block",margin:"0.8rem 0 2rem",letterSpacing:"0.04em"}}>ध्यान · धन · साधना</span>
             <p style={{fontSize:"1.03rem",lineHeight:1.58,color:"var(--ink2)",fontWeight:300,maxWidth:620,marginBottom:"2.4rem"}}>For over <strong style={{color:"var(--p600)",fontWeight:600}}>30 years</strong>, guiding 300+ organisations to double their profits — through peace, dharma &amp; the timeless science of meditation. Govt. of India certified ZED Master Trainer.</p>
-            <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"0.75rem",marginBottom:"2.2rem"}}>
+            <div className="hero-stats" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"0.75rem",marginBottom:"2.2rem"}}>
               {[["30+","Years of Mastery"],["300+","Organisations"],["2×","Profit Growth"]].map(([n,l])=>(
                 <div key={l} style={{background:"rgba(255,255,255,0.52)",backdropFilter:"blur(18px)",border:"1px solid rgba(255,255,255,0.84)",borderRadius:14,boxShadow:"0 4px 20px rgba(107,53,200,0.08)",padding:"1.1rem 1.4rem",textAlign:"center"}}>
                   <span style={{fontFamily:"'DM Sans',sans-serif",fontSize:"3rem",fontWeight:700,lineHeight:1,background:"linear-gradient(135deg,var(--p700),var(--p400))",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text",display:"block"}}>{n}</span>
@@ -327,22 +490,22 @@ function Hero() {
                 </div>
               ))}
             </div>
-            <div style={{display:"flex",gap:"1rem"}}>
+            <div className="hero-cta" style={{display:"flex",gap:"1rem"}}>
               <a href="#services" className="btn-primary">Explore Services</a>
               <a href="#contact" className="btn-secondary">Connect With Me</a>
             </div>
           </div>
           {/* Right — portrait + overlay */}
-          <div style={{position:"relative",overflow:"hidden",minHeight:"100%",display:"flex",alignItems:"flex-end"}}>
+          <div className="hero-right" style={{position:"relative",overflow:"hidden",minHeight:"100%",display:"flex",alignItems:"flex-end"}}>
             <div style={{position:"absolute",inset:0,zIndex:2,background:"linear-gradient(240deg,rgba(47,20,90,0.18)2%,rgba(47,20,90,0.62)72%),linear-gradient(0deg,rgba(36,18,70,0.74)0%,rgba(36,18,70,0)42%)",pointerEvents:"none"}}/>
             <div style={{position:"absolute",inset:0,zIndex:1,overflow:"hidden"}}>
               <img src="/image.png" alt="Mishrilal Suriya" className="photo-float" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"52% 16%",filter:"brightness(0.94)contrast(1.08)saturate(1.06)"}}/>
             </div>
             {/* Overlay cards */}
-            <div style={{position:"relative",left:"5.5%",right:"5.5%",bottom:"1.1rem",width:"89%",display:"flex",flexDirection:"column",gap:"0.8rem",zIndex:3,marginBottom:"1.1rem"}}>
+            <div className="hero-overlay" style={{position:"relative",left:"5.5%",right:"5.5%",bottom:"1.1rem",width:"89%",display:"flex",flexDirection:"column",gap:"0.8rem",zIndex:3,marginBottom:"1.1rem"}}>
               <div className="glass" style={{padding:"1.45rem 1.2rem",background:"rgba(67,38,120,0.54)",border:"1px solid rgba(255,255,255,0.32)",boxShadow:"0 10px 38px rgba(10,4,22,0.35)",borderRadius:20}}>
                 <span style={{fontSize:"0.6rem",fontWeight:600,letterSpacing:"0.28em",textTransform:"uppercase",color:"var(--p500)",display:"block",marginBottom:"0.9rem"}}>Credentials &amp; Expertise</span>
-                <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.6rem"}}>
+                <div className="hero-cred-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"0.6rem"}}>
                   {[
                     ["v","QCI Certified — ZED Master Trainer","Quality Council of India · Govt. of India"],
                     ["c","Meditation Master Trainer","Daily Virtual Dhyan & Swadhyaya Sessions"],
@@ -411,10 +574,10 @@ function Marquee() {
 function About() {
   return (
     <section id="about" style={{padding:"7rem 0",position:"relative",zIndex:1,background:"var(--bg)"}}>
-      <div style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1.5fr",gap:"5rem",alignItems:"start"}}>
+      <div className="sec-inner" style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
+        <div className="about-grid" style={{display:"grid",gridTemplateColumns:"1fr 1.5fr",gap:"5rem",alignItems:"start"}}>
           {/* Left sticky panel */}
-          <div className="reveal" style={{position:"sticky",top:90}}>
+          <div className="reveal about-sticky" style={{position:"sticky",top:90}}>
             <div style={{position:"relative",width:"100%",marginBottom:"2.2rem"}}>
               <div className="photo-bg-shape" style={{position:"absolute",top:18,left:18,right:-18,bottom:-18,borderRadius:"44% 56% 62% 38%/42% 46% 54% 58%",background:"linear-gradient(135deg,rgba(139,92,246,0.14)0%,rgba(240,192,64,0.10)50%,rgba(232,121,249,0.08)100%)",zIndex:0}}/>
               <div className="photo-ring" style={{position:"absolute",top:-12,left:-12,right:12,bottom:12,borderRadius:"42% 58% 58% 42%/48% 42% 58% 52%",border:"1.5px solid rgba(139,92,246,0.22)",zIndex:0}}/>
@@ -449,7 +612,7 @@ function About() {
               <div style={{width:36,height:"2.5px",background:"linear-gradient(90deg,var(--p500),var(--rose))",borderRadius:2,margin:"0.85rem 0"}}/>
               <h2 className="font-display sec-h" style={{fontSize:"clamp(2.4rem,4.2vw,3.6rem)",fontWeight:700,lineHeight:1.12,color:"var(--ink)",letterSpacing:"-0.01em"}}>Engineer.<br/><em style={{fontStyle:"italic",fontWeight:400,color:"var(--p600)"}}>Meditator.</em><br/>Mentor.</h2>
             </div>
-            <div className="glass" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"0.75rem"}}>
+            <div className="glass about-stats" style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"0.75rem"}}>
               {[["30+","Years of Mastery"],["300+","Organisations"],["2×","Profit Growth"]].map(([n,l])=>(
                 <div key={l} style={{borderRadius:14,border:"1px solid rgba(255,255,255,0.88)",textAlign:"center",padding:"1.1rem 0.8rem"}}>
                   <span style={{display:"block",fontFamily:"'DM Sans',sans-serif",fontSize:"2rem",fontWeight:700,background:"linear-gradient(135deg,var(--p600),var(--p400))",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>{n}</span>
@@ -491,8 +654,8 @@ function Framework() {
       {[{w:600,h:600,t:-150,l:-150,bg:"rgba(107,53,200,0.55)"},{w:450,h:450,b:-100,r:-100,bg:"rgba(240,192,64,0.40)"},{w:350,h:350,t:"40%",l:"40%",bg:"rgba(232,121,249,0.30)"}].map(({w,h,t,b,l,r,bg},i)=>(
       <div key={i} style={{position:"absolute",borderRadius:"50%",filter:"blur(100px)",pointerEvents:"none",width:w,height:h,top:t,bottom:b,left:l,right:r,background:`radial-gradient(circle,${bg}0%,transparent 70%)`,animation:`fwAmb ${[18,22,15][i]}s ease-in-out infinite alternate`}}/>
     ))}
-      <div style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem",position:"relative",zIndex:1}}>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3rem",alignItems:"end",marginBottom:"3.5rem"}}>
+      <div className="sec-inner" style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem",position:"relative",zIndex:1}}>
+        <div className="fw-header" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"3rem",alignItems:"end",marginBottom:"3.5rem"}}>
           <div className="reveal">
             <span style={{display:"block",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.3em",textTransform:"uppercase",color:"rgba(196,181,253,0.8)"}}>The Framework</span>
             <div style={{width:36,height:"2.5px",background:"linear-gradient(90deg,var(--p300),var(--rose))",borderRadius:2,margin:"0.85rem 0"}}/>
@@ -500,7 +663,7 @@ function Framework() {
           </div>
           <p className="reveal" style={{fontSize:"0.97rem",lineHeight:1.85,color:"rgba(255,255,255,0.52)",maxWidth:420,transitionDelay:"0.15s"}}>Through Swadhyaya and Dhyan, these four dimensions of a flourishing life become naturally accessible to every sincere seeker.</p>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"1.4rem"}}>
+        <div className="fw-grid" style={{display:"grid",gridTemplateColumns:"repeat(4,1fr)",gap:"1.4rem"}}>
           {cards.map(({n,en,hi,desc,glow,bar,delay})=>(
             <div key={n} className="fw-card reveal" style={{transitionDelay:`${delay}s`}}>
               <div style={{position:"absolute",width:140,height:140,borderRadius:"50%",filter:"blur(40px)",top:-30,right:-30,pointerEvents:"none",background:`radial-gradient(circle,${glow}0%,transparent 70%)`,opacity:0.55}}/>
@@ -523,13 +686,13 @@ function Framework() {
 function Philosophy() {
   return (
     <section id="philosophy" style={{padding:"7rem 0",position:"relative",zIndex:1}}>
-      <div style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
+      <div className="sec-inner" style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
         <div style={{textAlign:"center",marginBottom:"4rem"}} className="reveal">
           <span style={{display:"block",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.3em",textTransform:"uppercase",color:"var(--p600)"}}>Core Philosophy</span>
           <div style={{width:36,height:"2.5px",background:"linear-gradient(90deg,var(--p500),var(--rose))",borderRadius:2,margin:"0.85rem auto"}}/>
           <h2 className="font-display" style={{fontSize:"clamp(2.4rem,4.2vw,3.6rem)",fontWeight:700,lineHeight:1.12,color:"var(--ink)"}}>Where <em style={{fontStyle:"italic",fontWeight:400,color:"var(--p600)"}}>Dharma</em> Meets Excellence</h2>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4.5rem",alignItems:"start"}}>
+        <div className="phil-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"4.5rem",alignItems:"start"}}>
           {/* Left — quotes */}
           <div>
             {[
@@ -538,7 +701,7 @@ function Philosophy() {
             ].map(({text,trans,src,glow,delay},i)=>(
               <div key={i} className="glass bq reveal" style={{marginBottom:"1.4rem",transitionDelay:`${delay}s`}}>
                 <div style={{position:"absolute",width:180,height:180,borderRadius:"50%",filter:"blur(55px)",opacity:0.2,top:-50,right:-50,pointerEvents:"none",background:`radial-gradient(circle,${glow}0%,transparent 70%)`}}/>
-                <span className="font-display" style={{fontSize:"5rem",lineHeight:0.8,display:"block",marginBottom:"0.4rem",background:"linear-gradient(135deg,var(--p400),var(--rose))",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text",opacity:0.35}}>"</span>
+                <span className="font-display" style={{fontSize:"clamp(3rem,8vw,5rem)",lineHeight:0.8,display:"block",marginBottom:"0.4rem",background:"linear-gradient(135deg,var(--p400),var(--rose))",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text",opacity:0.35}}>"</span>
                 <span className="font-display" style={{fontSize:"1.7rem",fontWeight:500,color:"var(--ink)",display:"block",lineHeight:1.55,marginBottom:"0.55rem"}}>{text}</span>
                 <span className="font-display" style={{fontStyle:"italic",fontSize:"1rem",color:"var(--muted)",display:"block",marginBottom:"0.4rem"}}>{trans}</span>
                 <span style={{fontSize:"0.6rem",fontWeight:600,letterSpacing:"0.22em",textTransform:"uppercase",color:"var(--p500)"}}>{src}</span>
@@ -571,7 +734,7 @@ function Philosophy() {
             <span style={{display:"block",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.3em",textTransform:"uppercase",color:"rgba(196,181,253,0.78)"}}>Books Published</span>
             <div style={{width:36,height:"2.5px",background:"linear-gradient(90deg,rgba(196,181,253,0.8),rgba(240,192,64,0.85))",borderRadius:2,margin:"0.85rem 0"}}/>
           </div>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"1rem",position:"relative",zIndex:1}}>
+          <div className="phil-books" style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"1rem",position:"relative",zIndex:1}}>
             {[
               {title:"Zero Mind · Zero Waste · Zero Defect · Zero Effect",sub:"Written for Government of India",desc:"A framework linking ancient Indian spiritual wisdom with quality excellence, introducing Zero Mind as the inner base for external transformation."},
               {title:"Samyak Samadhan",sub:"Author's Work",desc:"Explores right understanding, inner resolution, and practical life clarity. The book guides readers toward balanced decisions and peaceful progress."},
@@ -606,23 +769,23 @@ function Services() {
   ];
   return (
     <section id="services" style={{padding:"7rem 0",background:"var(--bg)",position:"relative",zIndex:1}}>
-      <div style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
+      <div className="sec-inner" style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
         <div style={{marginBottom:"3.5rem"}} className="reveal">
           <span style={{display:"block",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.3em",textTransform:"uppercase",color:"var(--p600)"}}>What I Offer</span>
           <div style={{width:36,height:"2.5px",background:"linear-gradient(90deg,var(--p500),var(--rose))",borderRadius:2,margin:"0.85rem 0"}}/>
           <h2 className="font-display" style={{fontSize:"clamp(2.4rem,4.2vw,3.6rem)",fontWeight:700,color:"var(--ink)"}}>Pathways to <em style={{fontStyle:"italic",fontWeight:400,color:"var(--p600)"}}>Transformation</em></h2>
         </div>
-        <div style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"2rem"}}>
+        <div className="svc-grid" style={{display:"grid",gridTemplateColumns:"repeat(2,1fr)",gap:"2rem"}}>
           {cards.map(({n,title,body,delay})=>(
             <div key={n} className="svc-card reveal" style={{transitionDelay:`${delay}s`}}>
-              <span className="font-display" style={{fontSize:"3.8rem",fontWeight:700,display:"block",lineHeight:1,marginBottom:"0.5rem",color:"#fff",position:"relative",zIndex:1}}>{n}</span>
+              <span className="font-display" style={{fontSize:"clamp(2.5rem,6vw,3.8rem)",fontWeight:700,display:"block",lineHeight:1,marginBottom:"0.5rem",color:"#fff",position:"relative",zIndex:1}}>{n}</span>
               <h3 className="font-display" style={{fontSize:"1.3rem",fontWeight:700,color:"var(--gold)",marginBottom:"1rem",position:"relative",zIndex:1}}>{title}</h3>
               <p style={{fontSize:"0.92rem",lineHeight:1.72,color:"rgba(255,255,255,0.56)",fontWeight:300,flex:1,position:"relative",zIndex:1}}>{body}</p>
             </div>
           ))}
           {/* Courses card */}
           <div id="courses-card" className="svc-card reveal" style={{transitionDelay:"0.48s",gridColumn:"1 / -1"}}>
-            <span className="font-display" style={{fontSize:"3.8rem",fontWeight:700,display:"block",lineHeight:1,marginBottom:"0.5rem",color:"#fff",position:"relative",zIndex:1}}>05</span>
+            <span className="font-display" style={{fontSize:"clamp(2.5rem,6vw,3.8rem)",fontWeight:700,display:"block",lineHeight:1,marginBottom:"0.5rem",color:"#fff",position:"relative",zIndex:1}}>05</span>
             <h3 className="font-display" style={{fontSize:"1.3rem",fontWeight:700,color:"var(--gold)",marginBottom:"1rem",position:"relative",zIndex:1}}>Courses</h3>
             <div style={{display:"inline-flex",alignItems:"center",gap:"0.45rem",padding:"0.45rem 0.85rem",marginBottom:"0.95rem",borderRadius:999,background:"rgba(240,192,64,0.16)",border:"1px solid rgba(240,192,64,0.45)",boxShadow:"0 0 22px rgba(240,192,64,0.18)",width:"fit-content",position:"relative",zIndex:1}}>
               <span style={{fontSize:"0.76rem",fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",color:"#ffe6a0"}}>3 Levels of Course</span>
@@ -661,8 +824,8 @@ function StudentReading() {
 
   return (
     <section id="student-reading" style={{padding:"7rem 0 5.5rem",position:"relative",zIndex:1}}>
-      <div style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
-        <div className="reveal" style={{display:"grid",gridTemplateColumns:"1.05fr 0.95fr",gap:"2rem",alignItems:"stretch"}}>
+      <div className="sec-inner" style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
+        <div className="reveal sr-grid" style={{display:"grid",gridTemplateColumns:"1.05fr 0.95fr",gap:"2rem",alignItems:"stretch"}}>
           <div className="glass" style={{padding:"2rem 2rem 1.9rem"}}>
             <span style={{display:"block",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.3em",textTransform:"uppercase",color:"var(--p600)"}}>To Offer Students</span>
             <div style={{width:36,height:"2.5px",background:"linear-gradient(90deg,var(--p500),var(--rose))",borderRadius:2,margin:"0.85rem 0"}}/>
@@ -710,7 +873,7 @@ function FeedbackImpact() {
 
   return (
     <section id="feedback" style={{padding:"0 0 6.5rem",position:"relative",zIndex:1}}>
-      <div style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
+      <div className="sec-inner" style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
         <div className="reveal glass" style={{padding:"2.2rem 2rem 2rem",position:"relative",overflow:"hidden"}}>
           <div style={{position:"absolute",width:300,height:300,right:-100,bottom:-120,borderRadius:"50%",background:"radial-gradient(circle,rgba(139,92,246,0.2)0%,transparent 70%)",pointerEvents:"none"}}/>
           <span style={{display:"block",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.3em",textTransform:"uppercase",color:"var(--p600)",position:"relative",zIndex:1}}>
@@ -723,7 +886,7 @@ function FeedbackImpact() {
           <p style={{fontSize:"0.97rem",lineHeight:1.82,color:"var(--muted)",marginBottom:"1rem",position:"relative",zIndex:1}}>
             Participants consistently report clarity, direction, and inner stability after completing the course journey.
           </p>
-          <div style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:"0.75rem",position:"relative",zIndex:1}}>
+          <div className="fb-grid" style={{display:"grid",gridTemplateColumns:"repeat(2,minmax(0,1fr))",gap:"0.75rem",position:"relative",zIndex:1}}>
             {feedbackTopics.map((item) => (
               <div key={item} style={{padding:"0.85rem 1rem",borderRadius:12,background:"rgba(255,255,255,0.62)",border:"1px solid rgba(255,255,255,0.88)",boxShadow:"0 4px 18px rgba(107,53,200,0.08)",color:"var(--ink2)",fontSize:"0.9rem",fontWeight:500}}>
                 {item}
@@ -755,8 +918,8 @@ function YouTube() {
       {[{w:550,h:550,t:-120,l:-120,bg:"rgba(255,0,0,0.22),rgba(139,92,246,0.25)"},{w:450,h:450,b:-100,r:-80,bg:"rgba(240,192,64,0.28),rgba(232,121,249,0.15)"},{w:300,h:300,t:"40%",r:"25%",bg:"rgba(255,80,80,0.18)"}].map(({w,h,t,b,l,r,bg},i)=>(
         <div key={i} style={{position:"absolute",borderRadius:"50%",filter:"blur(95px)",pointerEvents:"none",width:w,height:h,top:t,bottom:b,left:l,right:r,background:`radial-gradient(circle,${bg.includes(",")?"": ""}${bg}0%,transparent 70%)`}}/>
       ))}
-      <div style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem",position:"relative",zIndex:1}}>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"5rem",alignItems:"center"}}>
+      <div className="sec-inner" style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem",position:"relative",zIndex:1}}>
+        <div className="yt-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"5rem",alignItems:"center"}}>
           <div className="reveal">
             <span style={{fontSize:"0.62rem",fontWeight:600,letterSpacing:"0.3em",textTransform:"uppercase",color:"rgba(255,100,100,0.9)",display:"block",marginBottom:"0.6rem"}}>
               <span className="live-blink" style={{display:"inline-block",width:8,height:8,borderRadius:"50%",background:"#ff4444",marginRight:"0.5rem",boxShadow:"0 0 10px rgba(255,68,68,0.9)"}}/>Daily Sessions on YouTube
@@ -839,8 +1002,8 @@ function Contact() {
   ];
   return (
     <section id="contact" style={{padding:"7rem 0",position:"relative",zIndex:1}}>
-      <div style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
-        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"5rem",alignItems:"start"}}>
+      <div className="sec-inner" style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem"}}>
+        <div className="ct-grid" style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"5rem",alignItems:"start"}}>
           <div className="reveal">
             <span style={{display:"block",fontSize:"0.65rem",fontWeight:600,letterSpacing:"0.3em",textTransform:"uppercase",color:"var(--p600)"}}>Connect</span>
             <div style={{width:36,height:"2.5px",background:"linear-gradient(90deg,var(--p500),var(--rose))",borderRadius:2,margin:"0.85rem 0"}}/>
@@ -880,7 +1043,7 @@ function Contact() {
 function Footer() {
   return (
     <footer style={{background:"var(--p900)",padding:"2.2rem 0",position:"relative",zIndex:1}}>
-      <div style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
+      <div className="footer-flex sec-inner" style={{maxWidth:1160,margin:"0 auto",padding:"0 2.5rem",display:"flex",alignItems:"center",justifyContent:"space-between"}}>
         <span className="font-display" style={{fontSize:"1.1rem",fontWeight:600,color:"rgba(255,255,255,0.5)"}}>M L Suriya</span>
         <span className="om-pulse" style={{fontSize:"1.4rem",background:"linear-gradient(135deg,var(--p400),var(--gold),var(--rose))",WebkitBackgroundClip:"text",WebkitTextFillColor:"transparent",backgroundClip:"text"}}>ॐ</span>
         <span style={{fontSize:"0.6rem",fontWeight:500,letterSpacing:"0.12em",textTransform:"uppercase",color:"rgba(255,255,255,0.22)"}}>Here Quality Excellence Pvt. Ltd. · Vadodara · India</span>
