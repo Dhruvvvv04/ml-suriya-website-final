@@ -4,8 +4,7 @@ import { getFirestore } from 'firebase-admin/firestore';
 function initFirebase() {
   if (!getApps().length) {
     if (!process.env.FIREBASE_PROJECT_ID || !process.env.FIREBASE_PRIVATE_KEY || !process.env.FIREBASE_CLIENT_EMAIL) {
-      console.warn('Firebase admin initialization skipped: Missing environment variables.');
-      return null;
+      throw new Error('Firebase environment variables are completely missing in Vercel. Please check Vercel Environment Variables settings.');
     }
 
     try {
@@ -22,9 +21,8 @@ function initFirebase() {
           privateKey: formattedKey,
         }),
       });
-    } catch (error) {
-      console.error('Firebase admin initialization error', error);
-      return null;
+    } catch (error: any) {
+      throw new Error('Firebase initialization failed: ' + (error.message || String(error)));
     }
   }
   return getFirestore();
