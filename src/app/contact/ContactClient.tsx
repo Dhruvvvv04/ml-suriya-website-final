@@ -35,9 +35,10 @@ export default function ContactClient() {
         setFormData({ name: "", email: "", message: "" });
         setTimeout(() => setStatus("idle"), 3000);
       } else {
-        console.error("Failed to submit form");
+        const errorData = await response.json().catch(() => ({}));
+        console.error("Failed to submit form. Server response:", errorData);
+        alert("Failed to send: " + (errorData.details || errorData.error || "Unknown error"));
         setStatus("idle");
-        alert("Failed to send message. Please try again or use WhatsApp.");
       }
     } catch (error) {
       console.error("Error submitting form:", error);

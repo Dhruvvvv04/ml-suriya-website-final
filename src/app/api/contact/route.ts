@@ -28,10 +28,10 @@ export async function POST(request: Request) {
       { success: true, id: docRef.id },
       { status: 201 }
     );
-  } catch (error) {
+  } catch (error: any) {
     console.error('Error saving contact message:', error);
     return NextResponse.json(
-      { error: 'Internal Server Error' },
+      { error: 'Internal Server Error', details: error.message || String(error) },
       { status: 500 }
     );
   }
