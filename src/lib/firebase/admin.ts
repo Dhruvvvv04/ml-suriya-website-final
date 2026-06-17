@@ -34,7 +34,11 @@ function initFirebase() {
         }),
       });
     } catch (error: any) {
-      throw new Error('Firebase initialization failed: ' + (error.message || String(error)));
+      const keyLength = formattedKey ? formattedKey.length : 0;
+      const keyPreview = formattedKey 
+        ? `${formattedKey.substring(0, 40)}...${formattedKey.substring(formattedKey.length - 40)}` 
+        : 'empty';
+      throw new Error(`Firebase initialization failed: ${error.message || String(error)}. Key Length: ${keyLength}. Preview: ${keyPreview.replace(/\n/g, '\\n')}`);
     }
   }
   return getFirestore();
