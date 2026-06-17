@@ -8,16 +8,23 @@ function initFirebase() {
     }
 
     try {
-      // Handle both actual newlines, literal \n characters, and accidental surrounding quotes
+      // Reconstruct the PEM format completely to ignore any copy-paste formatting issues
       let formattedKey = process.env.FIREBASE_PRIVATE_KEY || '';
       
-      if (formattedKey.startsWith('"') && formattedKey.endsWith('"')) {
-        formattedKey = formattedKey.substring(1, formattedKey.length - 1);
-      } else if (formattedKey.startsWith("'") && formattedKey.endsWith("'")) {
-        formattedKey = formattedKey.substring(1, formattedKey.length - 1);
+      // Remove all quotes, headers, footers, and whitespace
+      let baseKey = formattedKey
+        .replace(/"/g, '')
+        .replace(/'/g, '')
+        .replace(/\\n/g, '')
+        .replace(/-----BEGIN PRIVATE KEY-----/g, '')
+        .replace(/-----END PRIVATE KEY-----/g, '')
+        .replace(/\s+/g, '');
+        
+      // Re-chunk into 64 characters per line
+      const keyChunks = baseKey.match(/.{1,64}/g);
+      if (keyChunks) {
+        formattedKey = `-----BEGIN PRIVATE KEY-----\n${keyChunks.join('\n')}\n-----END PRIVATE KEY-----\n`;
       }
-      
-      formattedKey = formattedKey.replace(/\\n/g, '\n');
 
       initializeApp({
         credential: cert({
