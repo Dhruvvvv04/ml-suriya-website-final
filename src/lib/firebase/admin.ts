@@ -1,9 +1,10 @@
-import * as admin from 'firebase-admin';
+import { getApps, initializeApp, cert } from 'firebase-admin/app';
+import { getFirestore } from 'firebase-admin/firestore';
 
-if (!admin.apps.length) {
+if (!getApps().length) {
   try {
-    admin.initializeApp({
-      credential: admin.credential.cert({
+    initializeApp({
+      credential: cert({
         projectId: process.env.FIREBASE_PROJECT_ID,
         clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
         // Handle newlines in the private key when loaded from env variables
@@ -15,6 +16,6 @@ if (!admin.apps.length) {
   }
 }
 
-const db = admin.firestore();
+const db = getFirestore();
 
 export { db };
