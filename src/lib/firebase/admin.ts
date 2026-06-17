@@ -8,11 +8,16 @@ function initFirebase() {
     }
 
     try {
-      // Handle both actual newlines and literal \n characters
-      let formattedKey = process.env.FIREBASE_PRIVATE_KEY;
-      if (formattedKey.includes('\\n')) {
-        formattedKey = formattedKey.replace(/\\n/g, '\n');
+      // Handle both actual newlines, literal \n characters, and accidental surrounding quotes
+      let formattedKey = process.env.FIREBASE_PRIVATE_KEY || '';
+      
+      if (formattedKey.startsWith('"') && formattedKey.endsWith('"')) {
+        formattedKey = formattedKey.substring(1, formattedKey.length - 1);
+      } else if (formattedKey.startsWith("'") && formattedKey.endsWith("'")) {
+        formattedKey = formattedKey.substring(1, formattedKey.length - 1);
       }
+      
+      formattedKey = formattedKey.replace(/\\n/g, '\n');
 
       initializeApp({
         credential: cert({
