@@ -1,9 +1,10 @@
 import { NextResponse } from 'next/server';
-import { db } from '@/lib/firebase/admin';
+import { getDb } from '@/lib/firebase/admin';
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
+    const db = getDb();
     const { name, email, message } = body;
 
     // Validate input
