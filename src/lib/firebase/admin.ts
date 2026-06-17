@@ -6,10 +6,9 @@ function initFirebase() {
     if (!process.env.FIREBASE_PROJECT_ID || !process.env.FIREBASE_PRIVATE_KEY || !process.env.FIREBASE_CLIENT_EMAIL) {
       throw new Error('Firebase environment variables are completely missing in Vercel. Please check Vercel Environment Variables settings.');
     }
-
+    let formattedKey = process.env.FIREBASE_PRIVATE_KEY || '';
     try {
       // Reconstruct the PEM format completely to ignore any copy-paste formatting issues
-      let formattedKey = process.env.FIREBASE_PRIVATE_KEY || '';
       
       // Remove all quotes, headers, footers, and whitespace
       const baseKey = formattedKey
