@@ -11,6 +11,7 @@
   "dependencies": {
     "caniuse-lite": "^1.0.30001680",
     "clsx": "^2.1.1",
+    "firebase-admin": "^14.0.0",
     "framer-motion": "^12.9.2",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.511.0",
