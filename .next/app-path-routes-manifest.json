@@ -1,0 +1,22 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/robots.txt/route": "/robots.txt",
+  "/sitemap.xml/route": "/sitemap.xml",
+  "/courses/[courseId]/page": "/courses/[courseId]",
+  "/publications/books/page": "/publications/books",
+  "/page": "/",
+  "/contact/page": "/contact",
+  "/publications/blog/page": "/publications/blog",
+  "/achievements/page": "/achievements",
+  "/about/page": "/about",
+  "/courses/page": "/courses",
+  "/legal/cookies/page": "/legal/cookies",
+  "/media/gallery/page": "/media/gallery",
+  "/legal/privacy/page": "/legal/privacy",
+  "/legal/terms/page": "/legal/terms",
+  "/publications/page": "/publications",
+  "/publications/blog/[slug]/page": "/publications/blog/[slug]",
+  "/legal/disclaimer/page": "/legal/disclaimer",
+  "/media/page": "/media",
+  "/philosophy/page": "/philosophy"
+}

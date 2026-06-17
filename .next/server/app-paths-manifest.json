@@ -1,10 +1,22 @@
 {
+  "/_not-found/page": "app/_not-found/page.js",
+  "/robots.txt/route": "app/robots.txt/route.js",
+  "/sitemap.xml/route": "app/sitemap.xml/route.js",
+  "/courses/[courseId]/page": "app/courses/[courseId]/page.js",
+  "/publications/books/page": "app/publications/books/page.js",
   "/page": "app/page.js",
-  "/media/page": "app/media/page.js",
-  "/about/page": "app/about/page.js",
   "/contact/page": "app/contact/page.js",
-  "/philosophy/page": "app/philosophy/page.js",
+  "/publications/blog/page": "app/publications/blog/page.js",
   "/achievements/page": "app/achievements/page.js",
+  "/about/page": "app/about/page.js",
+  "/courses/page": "app/courses/page.js",
+  "/legal/cookies/page": "app/legal/cookies/page.js",
+  "/media/gallery/page": "app/media/gallery/page.js",
+  "/legal/privacy/page": "app/legal/privacy/page.js",
+  "/legal/terms/page": "app/legal/terms/page.js",
   "/publications/page": "app/publications/page.js",
-  "/courses/page": "app/courses/page.js"
+  "/publications/blog/[slug]/page": "app/publications/blog/[slug]/page.js",
+  "/legal/disclaimer/page": "app/legal/disclaimer/page.js",
+  "/media/page": "app/media/page.js",
+  "/philosophy/page": "app/philosophy/page.js"
 }
