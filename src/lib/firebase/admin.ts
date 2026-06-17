@@ -12,7 +12,7 @@ function initFirebase() {
       let formattedKey = process.env.FIREBASE_PRIVATE_KEY || '';
       
       // Remove all quotes, headers, footers, and whitespace
-      let baseKey = formattedKey
+      const baseKey = formattedKey
         .replace(/"/g, '')
         .replace(/'/g, '')
         .replace(/\\n/g, '')
