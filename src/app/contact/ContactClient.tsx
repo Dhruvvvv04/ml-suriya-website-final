@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import RevealOnScroll from "@/components/ui/RevealOnScroll";
@@ -213,6 +214,36 @@ export default function ContactClient() {
 
         <Footer />
       </div>
+
+      {/* Toast Notification */}
+      <AnimatePresence>
+        {status === "success" && (
+          <motion.div
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="fixed bottom-6 right-6 z-[100] flex items-center gap-4 rounded-2xl bg-white p-4 shadow-[0_12px_40px_rgba(107,53,200,0.2)] border border-[rgba(139,92,246,0.15)]"
+          >
+            <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-gradient-to-br from-[#10b981] to-[#059669] text-white shadow-lg shadow-emerald-500/30">
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h4 className="font-display text-base font-bold text-[var(--color-ink)] leading-tight mb-0.5">Message Sent!</h4>
+              <p className="text-xs font-medium text-[var(--color-muted)]">We will contact you soon.</p>
+            </div>
+            <button 
+              onClick={() => setStatus("idle")} 
+              className="ml-2 flex h-8 w-8 items-center justify-center rounded-full text-gray-400 hover:bg-gray-100 hover:text-gray-700 transition-colors"
+            >
+              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
